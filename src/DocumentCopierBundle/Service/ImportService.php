@@ -145,6 +145,9 @@ class ImportService
                     case 'snippet':
                         ElementSerializer\Snippet::setData($elementName, $elementDao, $document);
                         break;
+                    case 'wysiwyg':
+                        ElementSerializer\Wysiwyg::setData($elementName, $elementDao, $document);
+                        break;
                     default:
                         ElementSerializer\GenericType::setData($elementName, $elementDao, $document);
                 }
