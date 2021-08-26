@@ -8,15 +8,15 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Command;
+namespace DocumentCopierBundle\Command;
 
-use Divante\DocumentCopierBundle\Service\DependencyManager;
-use Divante\DocumentCopierBundle\Service\ExportService;
-use Divante\DocumentCopierBundle\Service\FileService;
+use DocumentCopierBundle\Service\DependencyManager;
+use DocumentCopierBundle\Service\ExportService;
+use DocumentCopierBundle\Service\FileService;
 use Exception;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Document;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,9 +24,9 @@ use Symfony\Component\Filesystem\Exception\IOException;
 
 /**
  * Class DocumentExportCommand
- * @package Divante\DocumentCopierBundle\Command
+ * @package DocumentCopierBundle\Command
  */
-class DocumentExportCommand extends ContainerAwareCommand
+class DocumentExportCommand extends Command
 {
     const NAME = 'document-copier:export';
 
@@ -95,16 +95,16 @@ class DocumentExportCommand extends ContainerAwareCommand
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return void
+     * @return int
      * @throws Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $document = Document::getByPath($input->getOption('path'));
 
         if (!$document) {
             $output->writeln('<error>Document does not exist (' . $input->getOption('path') . ')</error>');
-            return;
+            return 1;
         }
 
         try {
@@ -124,11 +124,13 @@ class DocumentExportCommand extends ContainerAwareCommand
             }
         } catch (IOException $e) {
             $output->writeln('<error>Error while writing JSON to file: ' . $e->getMessage() . '</error>');
-            return;
+            return 1;
         } catch (Exception $e) {
             $output->writeln('<error>Export error: ' . $e->getMessage() . '</error>');
-            return;
+            return 1;
         }
+
+        return 1;
     }
 
     /**

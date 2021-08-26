@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Exception;
+namespace DocumentCopierBundle\Exception;
 
 use Exception;
 
 /**
  * Class ValidationException
- * @package Divante\DocumentCopierBundle\Exception
+ * @package DocumentCopierBundle\Exception
  */
 class ValidationException extends Exception
 {

@@ -8,16 +8,16 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\ElementSerializer;
+namespace DocumentCopierBundle\ElementSerializer;
 
-use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
+use DocumentCopierBundle\Exception\InvalidElementTypeException;
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
 use Pimcore\Model\Document\Tag;
 
 /**
  * Class Date
- * @package Divante\DocumentCopierBundle\ElementSerializer
+ * @package DocumentCopierBundle\ElementSerializer
  */
 class Date extends GenericType
 {

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\DependencyInjection;
+namespace DocumentCopierBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -25,12 +25,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('pimcore_document_copier');
-
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $treeBuilder = new TreeBuilder('pimcore_document_copier');
 
         return $treeBuilder;
     }

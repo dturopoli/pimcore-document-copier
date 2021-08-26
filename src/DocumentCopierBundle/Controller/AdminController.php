@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Controller;
+namespace DocumentCopierBundle\Controller;
 
-use Divante\DocumentCopierBundle\Exception\ValidationException;
-use Divante\DocumentCopierBundle\Service\AdminService;
+use DocumentCopierBundle\Exception\ValidationException;
+use DocumentCopierBundle\Service\AdminService;
 use Exception;
 use Pimcore\Bundle\AdminBundle\Controller\AdminController as PimcoreAdminController;
 use Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse;
@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class AdminController
- * @package Divante\DocumentCopierBundle\Controller
+ * @package DocumentCopierBundle\Controller
  */
 class AdminController extends PimcoreAdminController
 {

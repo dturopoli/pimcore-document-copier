@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Service;
+namespace DocumentCopierBundle\Service;
 
 use DirectoryIterator;
-use Divante\DocumentCopierBundle\DTO\PortableDocument;
-use Divante\DocumentCopierBundle\Exception\ValidationException;
+use DocumentCopierBundle\DTO\PortableDocument;
+use DocumentCopierBundle\Exception\ValidationException;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -22,7 +22,7 @@ use ZipArchive;
 
 /**
  * Class ZipFileService
- * @package Divante\DocumentCopierBundle\Service
+ * @package DocumentCopierBundle\Service
  */
 class ZipFileService
 {

@@ -8,14 +8,14 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Controller;
+namespace DocumentCopierBundle\Controller;
 
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 /**
  * Class DocumentController
- * @package Divante\DocumentCopierBundle\Controller
+ * @package DocumentCopierBundle\Controller
  */
 class DocumentController extends FrontendController
 {

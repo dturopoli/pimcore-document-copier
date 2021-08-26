@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Service;
+namespace DocumentCopierBundle\Service;
 
-use Divante\DocumentCopierBundle\DTO\PortableDocument;
-use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
-use Divante\DocumentCopierBundle\ElementSerializer;
+use DocumentCopierBundle\DTO\PortableDocument;
+use DocumentCopierBundle\Exception\InvalidElementTypeException;
+use DocumentCopierBundle\ElementSerializer;
 use Exception;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Document;
@@ -22,7 +22,7 @@ use Pimcore\Model\Element\Service as ElementService;
 
 /**
  * Class ExportService
- * @package Divante\DocumentCopierBundle\Service
+ * @package DocumentCopierBundle\Service
  */
 class ExportService
 {
@@ -79,7 +79,7 @@ class ExportService
     {
         $elements = [];
 
-        foreach ($document->getElements() as $name => $element) {
+        foreach ($document->getEditables() as $name => $element) {
             /** @var $element Tag */
             try {
                 $elementType = $element->getType();

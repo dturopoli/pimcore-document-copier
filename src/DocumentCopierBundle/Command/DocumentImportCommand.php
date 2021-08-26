@@ -8,22 +8,22 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Command;
+namespace DocumentCopierBundle\Command;
 
-use Divante\DocumentCopierBundle\Service\DependencyManager;
-use Divante\DocumentCopierBundle\Service\FileService;
-use Divante\DocumentCopierBundle\Service\ImportService;
+use DocumentCopierBundle\Service\DependencyManager;
+use DocumentCopierBundle\Service\FileService;
+use DocumentCopierBundle\Service\ImportService;
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DocumentImportCommand
- * @package Divante\DocumentCopierBundle\Command
+ * @package DocumentCopierBundle\Command
  */
-class DocumentImportCommand extends ContainerAwareCommand
+class DocumentImportCommand extends Command
 {
     const NAME = 'document-copier:import';
 
@@ -92,10 +92,10 @@ class DocumentImportCommand extends ContainerAwareCommand
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return void
+     * @return int
      * @throws Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (intval($input->getOption('recursiveDepth')) > 0) {
             $this->importWithDependencies(
@@ -111,6 +111,8 @@ class DocumentImportCommand extends ContainerAwareCommand
                 $input->getOption('root')
             );
         }
+
+        return 1;
     }
 
     /**
@@ -121,7 +123,7 @@ class DocumentImportCommand extends ContainerAwareCommand
     private function importSingleDocument(string $path, OutputInterface $output, ?string $rootDirectory = null): void
     {
         try {
-            $dto = $this->fileService->loadDto(strval($path), strval($rootDirectory));
+            $dto = $this->fileService->loadDto($path, strval($rootDirectory));
             $document = $this->importService->import($dto);
 
             if ($document) {

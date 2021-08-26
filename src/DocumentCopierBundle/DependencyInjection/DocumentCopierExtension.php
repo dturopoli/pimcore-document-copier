@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\DependencyInjection;
+namespace DocumentCopierBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

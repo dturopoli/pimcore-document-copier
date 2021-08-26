@@ -8,12 +8,13 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Service;
+namespace DocumentCopierBundle\Service;
 
-use Divante\DocumentCopierBundle\Command\DocumentExportCommand;
-use Divante\DocumentCopierBundle\Command\DocumentImportCommand;
-use Divante\DocumentCopierBundle\Exception\ValidationException;
+use DocumentCopierBundle\Command\DocumentExportCommand;
+use DocumentCopierBundle\Command\DocumentImportCommand;
+use DocumentCopierBundle\Exception\ValidationException;
 use Exception;
+use Pimcore\Log\Simple;
 use Pimcore\Model\Document;
 use Pimcore\Model\Element\Service;
 use Pimcore\Model\User;
@@ -24,7 +25,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Class AdminService
- * @package Divante\DocumentCopierBundle\Service
+ * @package DocumentCopierBundle\Service
  */
 class AdminService
 {
@@ -165,20 +166,26 @@ class AdminService
         $root = $this->getTemporaryRoot($key);
         mkdir($root, 0777, true);
 
-        $application = new Application($this->kernel);
-        $application->setAutoExit(false);
-        $input = new ArrayInput([
-            'command' => DocumentExportCommand::NAME,
-            '--path' => $path,
-            '--root' => $root,
-            '--recursiveDepth' => $depth,
-        ]);
-        $application->run($input, null);
+        try {
+            $application = new Application($this->kernel);
+            $application->setAutoExit(false);
+            $input = new ArrayInput([
+                'command' => DocumentExportCommand::NAME,
+                '--path' => $path,
+                '--root' => $root,
+                '--recursiveDepth' => $depth,
+            ]);
+          
+            $application->run($input, null);
 
-        $zipDestination = $this->getDownloadPath($key);
-        $this->zipFileService->zipRootDirectory($root, $zipDestination);
+            $zipDestination = $this->getDownloadPath($key);
+            $this->zipFileService->zipRootDirectory($root, $zipDestination);
 
-        return $key;
+            return $key;
+        } catch (\Throwable $e) {
+            Simple::log('test', $e->getMessage());
+        }
+
     }
 
     /**
@@ -257,6 +264,6 @@ class AdminService
 
         $documentKey = preg_replace("/[^a-zA-Z0-9]+/", "-", $documentKey);
 
-        return uniqid($documentKey . '_' . strval($depth) . '_' . $user->getId());
+        return uniqid($documentKey . '_' . $depth . '_' . $user->getId());
     }
 }

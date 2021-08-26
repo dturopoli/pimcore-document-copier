@@ -8,14 +8,14 @@
 
 declare(strict_types=1);
 
-namespace Divante\DocumentCopierBundle\Document\Areabrick;
+namespace DocumentCopierBundle\Document\Areabrick;
 
 use Pimcore\Extension\Document\Areabrick\AbstractTemplateAreabrick;
-use Pimcore\Model\Document\Tag\Area\Info;
+use Pimcore\Model\Document\Editable\Area\Info;
 
 /**
  * Class NestedAreabrick
- * @package Divante\DocumentCopierBundle\Document\Areabrick
+ * @package DocumentCopierBundle\Document\Areabrick
  */
 class NestedAreabrick extends AbstractTemplateAreabrick
 {

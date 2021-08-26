@@ -6,14 +6,14 @@
  * @copyright   Copyright (c) 2020 Divante Ltd. (https://divante.co)
  */
 
-namespace Divante\DocumentCopierBundle;
+namespace DocumentCopierBundle;
 
 use Pimcore\Extension\Bundle\Traits\PackageVersionTrait;
 use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
 
 /**
  * Class DocumentCopierBundle
- * @package Divante\DocumentCopierBundle
+ * @package DocumentCopierBundle
  */
 class DocumentCopierBundle extends AbstractPimcoreBundle
 {
