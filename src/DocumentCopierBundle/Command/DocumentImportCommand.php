@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Command;
+namespace Divante\DocumentCopierBundle\Command;
 
-use DocumentCopierBundle\Service\DependencyManager;
-use DocumentCopierBundle\Service\FileService;
-use DocumentCopierBundle\Service\ImportService;
+use Divante\DocumentCopierBundle\Service\DependencyManager;
+use Divante\DocumentCopierBundle\Service\FileService;
+use Divante\DocumentCopierBundle\Service\ImportService;
 use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class DocumentImportCommand
- * @package DocumentCopierBundle\Command
+ * @package Divante\DocumentCopierBundle\Command
  */
 class DocumentImportCommand extends Command
 {

@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Command;
+namespace Divante\DocumentCopierBundle\Command;
 
-use DocumentCopierBundle\Service\DependencyManager;
-use DocumentCopierBundle\Service\ExportService;
-use DocumentCopierBundle\Service\FileService;
+use Divante\DocumentCopierBundle\Service\DependencyManager;
+use Divante\DocumentCopierBundle\Service\ExportService;
+use Divante\DocumentCopierBundle\Service\FileService;
 use Exception;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Document;
@@ -24,7 +24,7 @@ use Symfony\Component\Filesystem\Exception\IOException;
 
 /**
  * Class DocumentExportCommand
- * @package DocumentCopierBundle\Command
+ * @package Divante\DocumentCopierBundle\Command
  */
 class DocumentExportCommand extends Command
 {

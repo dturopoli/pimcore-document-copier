@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\ElementSerializer;
+namespace Divante\DocumentCopierBundle\ElementSerializer;
 
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
@@ -16,7 +16,7 @@ use Pimcore\Model\Document\Tag;
 
 /**
  * Class GenericType
- * @package DocumentCopierBundle\ElementSerializer
+ * @package Divante\DocumentCopierBundle\ElementSerializer
  */
 class GenericType
 {

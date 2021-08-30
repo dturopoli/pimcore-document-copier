@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\ElementSerializer;
+namespace Divante\DocumentCopierBundle\ElementSerializer;
 
-use DocumentCopierBundle\Exception\InvalidElementTypeException;
+use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
 use Pimcore\Model\Document\Snippet as DocumentSnippet;
@@ -18,7 +18,7 @@ use Pimcore\Model\Document\Tag;
 
 /**
  * Class Snippet
- * @package DocumentCopierBundle\ElementSerializer
+ * @package Divante\DocumentCopierBundle\ElementSerializer
  */
 class Snippet extends GenericType
 {

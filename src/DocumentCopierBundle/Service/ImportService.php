@@ -8,10 +8,10 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Service;
+namespace Divante\DocumentCopierBundle\Service;
 
-use DocumentCopierBundle\DTO\PortableDocument;
-use DocumentCopierBundle\ElementSerializer;
+use Divante\DocumentCopierBundle\DTO\PortableDocument;
+use Divante\DocumentCopierBundle\ElementSerializer;
 use Exception;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Document;
@@ -19,7 +19,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class ImportService
- * @package DocumentCopierBundle\Service
+ * @package Divante\DocumentCopierBundle\Service
  */
 class ImportService
 {

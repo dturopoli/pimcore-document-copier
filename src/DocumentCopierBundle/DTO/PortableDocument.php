@@ -8,14 +8,14 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\DTO;
+namespace Divante\DocumentCopierBundle\DTO;
 
 use InvalidArgumentException;
 use JsonSerializable;
 
 /**
  * Class PortableDocument
- * @package DocumentCopierBundle\DTO
+ * @package Divante\DocumentCopierBundle\DTO
  */
 class PortableDocument implements JsonSerializable
 {

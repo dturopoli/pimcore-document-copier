@@ -1,4 +1,4 @@
 documentcopier:
-    resource: "@DocumentCopierBundle/Controller/"
+    resource: "@Divante\DocumentCopierBundle/Controller/"
     type:     annotation
     prefix:   /admin/api

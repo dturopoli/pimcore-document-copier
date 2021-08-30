@@ -8,9 +8,9 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Service;
+namespace Divante\DocumentCopierBundle\Service;
 
-use DocumentCopierBundle\DTO\PortableDocument;
+use Divante\DocumentCopierBundle\DTO\PortableDocument;
 use Exception;
 use InvalidArgumentException;
 use Pimcore\Model\Asset;
@@ -18,7 +18,7 @@ use Symfony\Component\Filesystem\Exception\IOException;
 
 /**
  * Class FileService
- * @package DocumentCopierBundle\Service
+ * @package Divante\DocumentCopierBundle\Service
  */
 class FileService
 {

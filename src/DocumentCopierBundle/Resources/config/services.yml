@@ -8,27 +8,27 @@ services:
     # Controllers
     #
 
-    DocumentCopierBundle\Controller\:
+    Divante\DocumentCopierBundle\Controller\:
         resource: '../../Controller'
         public: true
         autowire: true
         tags: ['controller.service_arguments']
 
-    DocumentCopierBundle\Controller\AdminController: ~
+    Divante\DocumentCopierBundle\Controller\AdminController: ~
 
     #
     # Commands
     #
 
-    DocumentCopierBundle\Command\:
+    Divante\DocumentCopierBundle\Command\:
         resource: '../../Command'
         tags: ['console.command']
 
-    DocumentCopierBundle\Command\DocumentExportCommand:
+    Divante\DocumentCopierBundle\Command\DocumentExportCommand:
         arguments:
             $kernelProjectDir: '%kernel.project_dir%'
 
-    DocumentCopierBundle\Command\DocumentImportCommand:
+    Divante\DocumentCopierBundle\Command\DocumentImportCommand:
         arguments:
             $kernelProjectDir: '%kernel.project_dir%'
 
@@ -36,13 +36,13 @@ services:
     # Services
     #
 
-    DocumentCopierBundle\Service\:
+    Divante\DocumentCopierBundle\Service\:
         resource: '../../Service'
 
-    DocumentCopierBundle\Service\FileService:
+    Divante\DocumentCopierBundle\Service\FileService:
         arguments:
             $kernelProjectDir: '%kernel.project_dir%'
 
-    DocumentCopierBundle\Service\AdminService:
+    Divante\DocumentCopierBundle\Service\AdminService:
         arguments:
             $kernelProjectDir: '%kernel.project_dir%'

@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Service;
+namespace Divante\DocumentCopierBundle\Service;
 
-use DocumentCopierBundle\DTO\PortableDocument;
-use DocumentCopierBundle\Exception\InvalidElementTypeException;
-use DocumentCopierBundle\ElementSerializer;
+use Divante\DocumentCopierBundle\DTO\PortableDocument;
+use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
+use Divante\DocumentCopierBundle\ElementSerializer;
 use Exception;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Document;
@@ -22,7 +22,7 @@ use Pimcore\Model\Element\Service as ElementService;
 
 /**
  * Class ExportService
- * @package DocumentCopierBundle\Service
+ * @package Divante\DocumentCopierBundle\Service
  */
 class ExportService
 {

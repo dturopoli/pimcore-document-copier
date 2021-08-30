@@ -8,11 +8,11 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Service;
+namespace Divante\DocumentCopierBundle\Service;
 
-use DocumentCopierBundle\Command\DocumentExportCommand;
-use DocumentCopierBundle\Command\DocumentImportCommand;
-use DocumentCopierBundle\Exception\ValidationException;
+use Divante\DocumentCopierBundle\Command\DocumentExportCommand;
+use Divante\DocumentCopierBundle\Command\DocumentImportCommand;
+use Divante\DocumentCopierBundle\Exception\ValidationException;
 use Exception;
 use Pimcore\Log\Simple;
 use Pimcore\Model\Document;
@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * Class AdminService
- * @package DocumentCopierBundle\Service
+ * @package Divante\DocumentCopierBundle\Service
  */
 class AdminService
 {

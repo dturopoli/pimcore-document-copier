@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace DocumentCopierBundle\Exception;
+namespace Divante\DocumentCopierBundle\Exception;
 
 use Exception;
 
 /**
  * Class InvalidElementTypeException
- * @package DocumentCopierBundle\Exception
+ * @package Divante\DocumentCopierBundle\Exception
  */
 class InvalidElementTypeException extends Exception
 {
