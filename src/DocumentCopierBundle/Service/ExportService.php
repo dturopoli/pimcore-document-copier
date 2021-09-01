@@ -16,7 +16,7 @@ use Divante\DocumentCopierBundle\ElementSerializer;
 use Exception;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Document;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 use Psr\Log\LoggerInterface;
 use Pimcore\Model\Element\Service as ElementService;
 
@@ -80,7 +80,7 @@ class ExportService
         $elements = [];
 
         foreach ($document->getEditables() as $name => $element) {
-            /** @var $element Tag */
+            /** @var $element Editable */
             try {
                 $elementType = $element->getType();
 

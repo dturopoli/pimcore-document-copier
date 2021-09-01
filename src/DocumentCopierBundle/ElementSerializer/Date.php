@@ -13,7 +13,7 @@ namespace Divante\DocumentCopierBundle\ElementSerializer;
 use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 
 /**
  * Class Date
@@ -22,14 +22,14 @@ use Pimcore\Model\Document\Tag;
 class Date extends GenericType
 {
     /**
-     * @param Tag $element
+     * @param Editable $element
      * @return mixed
      * @throws InvalidElementTypeException
      */
-    public static function getData(Tag $element)
+    public static function getData(Editable $element)
     {
-        if ($element instanceof Tag\Date) {
-            return $element->date ? $element->date->getTimestamp() : null;
+        if ($element instanceof Editable\Date) {
+            return $element->getDate() ? $element->getDate->getTimestamp() : null;
         } else {
             throw new InvalidElementTypeException();
         }
@@ -42,10 +42,6 @@ class Date extends GenericType
      */
     public static function setData(string $elementName, array $elementDto, PageSnippet $document): void
     {
-        /** @var Tag\Date $element */
-        $element = Document\Tag::factory($elementDto['type'], $elementName, $document->getId());
-        $element->setDataFromResource($elementDto['data']);
-
-        $document->setElement($elementName, $element);
+        $document->setRawEditable($elementName, $elementDto['type'], $elementDto['data']);
     }
 }

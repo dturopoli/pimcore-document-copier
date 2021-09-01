@@ -16,7 +16,7 @@ use InvalidArgumentException;
 use Pimcore\Model\Asset;
 use Pimcore\Model\Asset\Image;
 use Pimcore\Model\Document;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 
 /**
  * Class DependencyManager
@@ -216,10 +216,10 @@ class DependencyManager
     }
 
     /**
-     * @param Tag $element
+     * @param Editable $element
      * @return array|null
      */
-    private function findElementDependency(Tag $element): ?array
+    private function findElementDependency(Editable $element): ?array
     {
         $elementType = strval($element->getType());
         $reason = 'Element \'' . $element->getName() . '\' of type \'' . $elementType . '\'';

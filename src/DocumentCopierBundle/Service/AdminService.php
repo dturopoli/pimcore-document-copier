@@ -175,7 +175,7 @@ class AdminService
                 '--root' => $root,
                 '--recursiveDepth' => $depth,
             ]);
-          
+
             $application->run($input, null);
 
             $zipDestination = $this->getDownloadPath($key);

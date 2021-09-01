@@ -12,7 +12,7 @@ namespace Divante\DocumentCopierBundle\ElementSerializer;
 
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 
 /**
  * Class GenericType
@@ -21,10 +21,10 @@ use Pimcore\Model\Document\Tag;
 class GenericType
 {
     /**
-     * @param Tag $element
+     * @param Editable $element
      * @return mixed
      */
-    public static function getData(Tag $element)
+    public static function getData(Editable $element)
     {
         // Default that works for simple fields
         // To be subclassed
@@ -38,11 +38,6 @@ class GenericType
      */
     public static function setData(string $elementName, array $elementDto, PageSnippet $document): void
     {
-        // Default that works for simple fields
-        // To be subclassed
-        $element = Document\Tag::factory($elementDto['type'], $elementName, $document->getId());
-        $element->setDataFromResource($elementDto['data']);
-
-        $document->setElement($elementName, $element);
+        $document->setRawEditable($elementName, $elementDto['type'], $elementDto['data']);
     }
 }

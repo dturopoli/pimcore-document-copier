@@ -134,7 +134,7 @@ class ZipFileService
 
         $assetsDir = $rootPath . '/' . FileService::ASSETS_DIRECTORY;
 
-        if (!is_dir($assetsDir)) {
+        if (file_exists($assetsDir) && !is_dir($assetsDir)) {
             throw new ValidationException('Assets directory not found');
         }
 

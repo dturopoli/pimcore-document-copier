@@ -15,7 +15,7 @@ use Pimcore\Model\Asset\Image as AssetImage;
 use Pimcore\Model\Asset\Image as ImageAsset;
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 
 /**
  * Class Image
@@ -24,13 +24,13 @@ use Pimcore\Model\Document\Tag;
 class Image extends GenericType
 {
     /**
-     * @param Tag $element
+     * @param Editable $element
      * @return mixed
      * @throws InvalidElementTypeException
      */
-    public static function getData(Tag $element)
+    public static function getData(Editable $element)
     {
-        if ($element instanceof Tag\Image) {
+        if ($element instanceof Editable\Image) {
             $data = $element->getData();
 
             $imageAsset = AssetImage::getById($data['id']);
@@ -56,8 +56,6 @@ class Image extends GenericType
      */
     public static function setData(string $elementName, array $elementDto, PageSnippet $document): void
     {
-        $element = Document\Tag::factory($elementDto['type'], $elementName, $document->getId());
-
         $imageAsset = ImageAsset::getByPath($elementDto['data']['path']);
 
         if (!$imageAsset) {
@@ -67,7 +65,6 @@ class Image extends GenericType
         unset($elementDto['data']['path']);
         $elementDto['data']['id'] = $imageAsset->getId();
 
-        $element->setDataFromResource(serialize($elementDto['data']));
-        $document->setElement($elementName, $element);
+        $document->setRawEditable($elementName, $elementDto['type'], serialize($elementDto['data']));
     }
 }

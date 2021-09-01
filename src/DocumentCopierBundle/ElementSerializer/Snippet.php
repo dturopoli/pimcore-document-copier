@@ -14,7 +14,7 @@ use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
 use Pimcore\Model\Document;
 use Pimcore\Model\Document\PageSnippet;
 use Pimcore\Model\Document\Snippet as DocumentSnippet;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 
 /**
  * Class Snippet
@@ -23,11 +23,11 @@ use Pimcore\Model\Document\Tag;
 class Snippet extends GenericType
 {
     /**
-     * @param Tag $element
+     * @param Editable $element
      * @return mixed
      * @throws InvalidElementTypeException
      */
-    public static function getData(Tag $element)
+    public static function getData(Editable $element)
     {
         if ($element instanceof Tag\Snippet) {
             $snippet = DocumentSnippet::getById($element->getData());
@@ -50,15 +50,12 @@ class Snippet extends GenericType
      */
     public static function setData(string $elementName, array $elementDto, PageSnippet $document): void
     {
-        $element = Document\Tag::factory($elementDto['type'], $elementName, $document->getId());
-
-        $snippet = Document\Snippet::getByPath(strval($elementDto['data']));
+        $snippet = Document::getByPath(strval($elementDto['data']));
 
         if (!$snippet) {
             return;
         }
 
-        $element->setDataFromResource($snippet->getId());
-        $document->setElement($elementName, $element);
+        $document->setRawEditable($elementName, $elementDto['type'], $snippet->getId());
     }
 }

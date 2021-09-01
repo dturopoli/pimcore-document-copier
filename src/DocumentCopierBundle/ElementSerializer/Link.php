@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Divante\DocumentCopierBundle\ElementSerializer;
 
 use Divante\DocumentCopierBundle\Exception\InvalidElementTypeException;
-use Pimcore\Model\Document\Tag;
+use Pimcore\Model\Document\Editable;
 
 /**
  * Class Link
@@ -20,13 +20,13 @@ use Pimcore\Model\Document\Tag;
 class Link extends GenericType
 {
     /**
-     * @param Tag $element
+     * @param Editable $element
      * @return mixed
      * @throws InvalidElementTypeException
      */
-    public static function getData(Tag $element)
+    public static function getData(Editable $element)
     {
-        if ($element instanceof Tag\Link) {
+        if ($element instanceof Editable\Link) {
             $data = $element->getData();
             unset($data['internal']);
             unset($data['internalId']);
